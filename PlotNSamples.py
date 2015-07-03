@@ -22,16 +22,6 @@ __maintainer__ = "G Lopez-Saldana"
 __email__ = "G.LopezSaldana@reading.ac.uk"
 __status__ = "Development"
 
-from os.path import basename as bn
-
-import matplotlib as mpl
-# Use a non-interactive backend
-mpl.use('Agg')
-
-from pylab import *
-from osgeo import gdal as gdal
-import numpy as np
-
 # File with data to plot
 file = sys.argv[1]
 # Band to plot - e.g. 2007161.NSamples.vrt
@@ -57,8 +47,6 @@ cmap._lut[0,:] = [ 1,1,1,1 ]
 MaxNumberOfSamples = 50
 SamplesForBRDF = 6
 
-from IPython import embed
-ipshell = embed()
 # Set to grey RGB (128,128,128) where there are 1 - 6 samples
 UpperGreyLimit = ( cmap._lut.shape[0] / ( MaxNumberOfSamples + 1 ) ) * SamplesForBRDF
 cmap._lut[1:UpperGreyLimit ,:] = [ 128,128,128,1 ]
